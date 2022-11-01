@@ -9,7 +9,7 @@ public class Main {
         var path = "C:\\Users\\Ilya\\Desktop\\t.txt";
 
         var objectNamesWorker = new ObjectNamesWorker(path);
-        var a = objectNamesWorker.generateSortedMap();
-        var b = objectNamesWorker.squeezeMap();
+        var sortedMap = objectNamesWorker.generateSortedMap();
+        var squeezeMap = objectNamesWorker.squeezeMap();
     }
 }
