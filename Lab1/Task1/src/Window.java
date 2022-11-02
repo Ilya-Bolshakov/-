@@ -1,7 +1,6 @@
 import java.util.Objects;
 
-public class Window implements CloseableToKey {
-    private Size size;
+public class Window extends HouseObject implements CloseableToKey {
     private boolean isClosed;
 
 
@@ -20,6 +19,10 @@ public class Window implements CloseableToKey {
 
     public void closeToKey() {
         isClosed = true;
+    }
+
+    public void openToKey() {
+        this.isClosed = false;
     }
 
     @Override
@@ -41,5 +44,10 @@ public class Window implements CloseableToKey {
                 "size=" + size +
                 ", isClosed=" + isClosed +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Size o) {
+        return this.size.compareTo(o);
     }
 }

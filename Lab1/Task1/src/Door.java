@@ -1,10 +1,8 @@
 import java.util.Objects;
 
-public class Door implements CloseableToKey {
+public class Door extends HouseObject implements CloseableToKey {
 
     private boolean isClosed;
-
-    private Size size;
 
     public Door() {
         this(0,0);
@@ -21,6 +19,10 @@ public class Door implements CloseableToKey {
 
     public void closeToKey() {
         isClosed = true;
+    }
+
+    public void openToKey() {
+        this.isClosed = false;
     }
 
     public boolean doorIsClosed() {
@@ -46,5 +48,10 @@ public class Door implements CloseableToKey {
                 "isClosed=" + isClosed +
                 ", size=" + size +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Size o) {
+        return this.size.compareTo(o);
     }
 }

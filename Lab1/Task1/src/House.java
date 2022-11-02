@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 
 public class House {
@@ -24,11 +26,11 @@ public class House {
         return windows;
     }
 
-    public void windowCount() {
-        System.out.println(windows.size());
+    public int windowCount() {
+        return this.getWindows().size();
     }
-    public void doorCount() {
-        System.out.println(doors.size());
+    public int doorCount() {
+        return doors.size();
     }
 
     public void addDoor(Door door) {
@@ -37,6 +39,12 @@ public class House {
 
     public void addWindow(Window window) {
         windows.add(window);
+    }
+
+    public List<HouseObject> SortObjects() {
+        ArrayList<HouseObject> houseObjects = new ArrayList<>(doors);
+        houseObjects.addAll(windows);
+        return houseObjects.stream().sorted(HouseObject::compareTo).toList();
     }
 
     @Override

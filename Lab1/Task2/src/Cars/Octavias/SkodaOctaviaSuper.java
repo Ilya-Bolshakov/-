@@ -1,7 +1,12 @@
 package Cars.Octavias;
 
-public class SkodaOctaviaSuper extends SkodaOctavia {
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
+public class SkodaOctaviaSuper extends SkodaOctavia {
+    private FileInputStream fis;
+    private Properties property;
     protected SkodaOctaviaSuper(String name) {
         super(name);
     }
@@ -12,17 +17,47 @@ public class SkodaOctaviaSuper extends SkodaOctavia {
 
     @Override
     protected void setMaxSpeed() {
-        this.maxSpeed = 200;
+        try {
+            fis = new FileInputStream("src/resources/config.property");
+            property = new Properties();
+            property.load(fis);
+            this.maxSpeed = Integer.parseInt(property.getProperty("car.skodaOctaviaSuper.maxSpeed"));
+            fis.close();
+        }
+        catch (IOException e)
+        {
+            System.err.println("ОШИБКА: Файл свойств отсуствует!");
+        }
     }
 
     @Override
     protected void setFuelConsumption() {
-        this.fuelConsumption = 12;
+        try {
+            fis = new FileInputStream("src/resources/config.property");
+            property = new Properties();
+            property.load(fis);
+            this.fuelConsumption = Integer.parseInt(property.getProperty("car.skodaOctaviaSuper.fuelConsumption"));
+            fis.close();
+        }
+        catch (IOException e)
+        {
+            System.err.println("ОШИБКА: Файл свойств отсуствует!");
+        }
     }
 
     @Override
     protected void setPrice() {
-        this.price = 2_000_000;
+        try {
+            fis = new FileInputStream("src/resources/config.property");
+            property = new Properties();
+            property.load(fis);
+            this.price = Integer.parseInt(property.getProperty("car.skodaOctaviaSuper.price"));
+            fis.close();
+        }
+        catch (IOException e)
+        {
+            System.err.println("ОШИБКА: Файл свойств отсуствует!");
+        }
     }
 
     @Override
