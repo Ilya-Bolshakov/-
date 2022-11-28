@@ -10,12 +10,10 @@ public class Main {
         house.doorCount();
         house.windowCount();
 
-        house.getDoors().get(2).closeToKey();
-        house.getWindows().get(2).closeToKey();
+        var sortedObjects = house.SortObjects();
 
-        System.out.println(house.getDoors().get(2));
-        System.out.println(house.getWindows().get(2));
-
-        System.out.println(house);
+        for (var item: sortedObjects) {
+            System.out.println(item);
+        }
     }
 }

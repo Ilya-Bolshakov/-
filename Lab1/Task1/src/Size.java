@@ -1,8 +1,9 @@
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Size {
-    private int length;
-    private int width;
+public class Size implements Comparable<Size> {
+    protected int length;
+    protected int width;
 
     public int getLength() {
         return length;
@@ -42,5 +43,10 @@ public class Size {
     @Override
     public String toString() {
         return String.format("Length: %s; Width: %s", length, width);
+    }
+
+    @Override
+    public int compareTo(Size o) {
+        return Integer.compare(this.length * this.width, o.length * o.width);
     }
 }

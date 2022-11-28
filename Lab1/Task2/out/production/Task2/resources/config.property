@@ -1,0 +1,7 @@
+car.skodaOctavia.price = 1200000
+car.skodaOctavia.fuelConsumption = 10
+car.skodaOctavia.maxSpeed = 160
+
+car.skodaOctaviaSuper.price = 2000000
+car.skodaOctaviaSuper.fuelConsumption = 12
+car.skodaOctaviaSuper.maxSpeed = 200

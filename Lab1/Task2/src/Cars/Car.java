@@ -1,6 +1,8 @@
 package Cars;
 
-public abstract class Car {
+import Interfaces.Beepable;
+
+public abstract class Car implements Beepable {
     protected String name;
     protected int maxSpeed;
     protected int fuelConsumption;
@@ -46,5 +48,4 @@ public abstract class Car {
 
     protected abstract void setPrice();
 
-    public abstract void beep();
 }

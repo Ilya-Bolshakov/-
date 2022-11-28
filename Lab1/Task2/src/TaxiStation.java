@@ -1,6 +1,7 @@
 import Cars.Car;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +26,7 @@ public class TaxiStation {
     }
 
     public List<Car> sortTaxiStationToFuelConsumption() {
-        return cars.stream().sorted((c1, c2) -> new Integer(c1.getFuelConsumption()).compareTo(new Integer(c2.getFuelConsumption()))).toList();
+        return cars.stream().sorted(Comparator.comparing(c -> c.getFuelConsumption())).toList();
     }
 
     public Car getCarBetweenSpeed(int firstParamSpeed, int secondParamSpeed) {
