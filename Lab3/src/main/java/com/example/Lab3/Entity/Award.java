@@ -1,6 +1,7 @@
 package com.example.Lab3.Entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.Collection;
 import java.util.Set;
@@ -14,7 +15,7 @@ public class Award {
 
     private String awardName;
     @OneToMany
-    @JoinColumn(name = "award", referencedColumnName = "id")
+    @JoinColumn(name = "award_id")
     private Set<listRecipientsAndAwards> awards;
 
     public Award(Integer id, String awardName) {

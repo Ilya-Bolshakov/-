@@ -36,7 +36,7 @@ public class Awarder {
     }
 
     @OneToMany
-    @JoinColumn(name = "awarder", referencedColumnName = "id")
+    @JoinColumn(name = "awarder_id")
     private Collection<listRecipientsAndAwards> awarders;
 
 
