@@ -8,6 +8,40 @@
     <title>Title</title>
 </head>
 <body>
+<style>
+.popup-fade {
+	display: none;
+}
+.popup-fade:before {
+	content: '';
+	background: #000;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0.7;
+	z-index: 9999;
+}
+.popup {
+	position: fixed;
+	top: 20%;
+	left: 50%;
+	padding: 20px;
+	width: 360px;
+	margin-left: -200px;
+	background: #fff;
+	border: 1px solid orange;
+	border-radius: 4px;
+	z-index: 99999;
+	opacity: 1;
+}
+.popup-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+</style>
 <div>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,16 +72,25 @@
             {{#awarders}}
             <a class="list-group-item list-group-item-action" aria-current="true">
                 <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1 mt-2">ID: {{name}}</h5>
+                    <h5 class="mb-1 mt-2">{{name}}</h5>
                     <div class="row">
                         <div class="col-8 offset-md-3">
                             <button type="button" onclick="location.href='/awarder/editAwarder/{{id}}'" class="btn btn-outline-warning mt-1">Edit awarder</button>
-                            <button type="button" onclick="location.href='awarder/deleteAwarded/{{id}}'" class="btn btn-outline-danger mt-2">Delete awarder</button>
+                            <button type="button" class="btn btn-outline-danger mt-2 popup-open">Delete awarder</button>
                         </div>
                     </div>
                 </div>
-                <p>{{id}}</p>
+                <p>ID: {{id}}</p>
             </a>
+                <div class="popup-fade">
+                    <div class="popup">
+                        <a class="popup-close btn btn-primary btn-sm" href="#">Close</a>
+                        <p>
+                            Do you really want to delete this item?
+                        </p>
+                        <button type="button" onclick="location.href='awarder/deleteAwarded/{{id}}'" class="btn btn-outline-danger mt-2 popup-open">Delete awarder</button>
+                    </div>
+                </div>
             {{/awarders}}
         </div>
         <div class="row">
@@ -56,6 +99,34 @@
             </div>
         </div>
 </div>
+
+    <script src="https://yandex.st/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+$(document).ready(function($) {
+	$('.popup-open').click(function() {
+		$('.popup-fade').fadeIn();
+		return false;
+	});
+
+	$('.popup-close').click(function() {
+		$('.popup-fade').fadeOut();
+		return false;
+	});
+
+	$(document).keydown(function(e) {
+		if (e.keyCode === 27) {
+			e.stopPropagation();
+			$('.popup-fade').fadeOut();
+		}
+	});
+
+	$('.popup-fade').click(function(e) {
+		if ($(e.target).closest('.popup').length == 0) {
+			$(this).fadeOut();
+		}
+	});
+});
+</script>
 
 </body>
 </html>

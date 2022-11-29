@@ -2,13 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Title</title>
 </head>
 <body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">Spring web app</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/">Main</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/awarder">Awarders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/award">Awards</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/listRecipientsAndAwards">Awarders list</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <form action="/awarder/addAwarder" method="post" name="awarder">
-        <label for="nameAwarder">Input awarder name:</label>
-        <input type="text" name="name" id="nameAwarder" required></input>
-        <button type="submit">Add awarder</button>
+        <div class="mb-3">
+            <label for="nameAwarder" class="form-label">Input awarder name:</label>
+            <input type="text" required name="name" class="form-control" id="nameAwarder" placeholder="awarder name...">
+        </div>
+        <button type="submit" class="btn btn-outline-dark mt-1">Add awarder</button>
     </form>
+</div>
 </body>
 </html>

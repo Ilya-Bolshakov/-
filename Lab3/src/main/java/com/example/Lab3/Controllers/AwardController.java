@@ -55,7 +55,7 @@ public class AwardController {
     public String editAwardSubmit(@ModelAttribute Award award,
                                     Model model) {
         var item = awardRepo.findById((long) award.getId()).get();
-        item = award;
+        item.setAwardName(award.getAwardName());
         awardRepo.save(item);
         return "redirect:/award";
     }
