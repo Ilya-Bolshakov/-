@@ -4,7 +4,13 @@ import jakarta.persistence.*;
 import com.example.Lab3.Entity.PK.listRecipientsAndAwardsPK;
 
 @Entity
-@Table(name = "listRecipientsAndAwards")
+@Table(name = "listRecipientsAndAwards",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        columnNames = {"mask", "group"},
+                        name="uk_product_serial_group_mask"
+                )
+        })
 public class listRecipientsAndAwards {
     @EmbeddedId
     private listRecipientsAndAwardsPK pk;
