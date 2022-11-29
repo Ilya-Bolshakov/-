@@ -5,8 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="awarder/addAwarder" method="post">
-
+    <form action="/awarder/addAwarder" method="post" name="awarder">
+        <label for="nameAwarder">Input awarder name:</label>
+        <input type="text" name="name" id="nameAwarder" required></input>
+        <button type="submit">Add awarder</button>
     </form>
 </body>
 </html>
