@@ -1,19 +1,21 @@
 package com.example.Lab3.Entity;
 
 import jakarta.persistence.*;
-import com.example.Lab3.Entity.PK.listRecipientsAndAwardsPK;
+
 
 @Entity
 @Table(name = "listRecipientsAndAwards",
         uniqueConstraints = {
                 @UniqueConstraint(
-                        columnNames = {"mask", "group"},
-                        name="uk_product_serial_group_mask"
+                        columnNames = {"awarder", "award"},
+                        name="uk_listRecipientsAndAwards_awarder_award"
                 )
         })
 public class listRecipientsAndAwards {
-    @EmbeddedId
-    private listRecipientsAndAwardsPK pk;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
 
     @MapsId("awardId")
     @ManyToOne

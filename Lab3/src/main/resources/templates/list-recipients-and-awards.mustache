@@ -6,8 +6,22 @@
 </head>
 <body>
   {{#listRecipientsAndAwards}}
+      {{id}}
       {{award.getAwardName}}
       {{awarder.getName}}
+      <a href="/listRecipientsAndAwards/edit/{{id}}">
+          <button>Edit list recipients</button>
+      </a>
+      <a href="/listRecipientsAndAwards/delete/{{id}}">
+          <button>Delete list recipients</button>
+      </a>
   {{/listRecipientsAndAwards}}
+
+  <a href="/listRecipientsAndAwards/add">
+      <button>add item recipients</button>
+  </a>
+  <div>
+      {{#errorMessage}}{{errorMessage}}{{/errorMessage}}
+  </div>
 </body>
 </html>
