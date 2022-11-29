@@ -27,8 +27,17 @@ public class ListRecipientsAndAwardsController {
     @RequestMapping(value = "/listRecipientsAndAwards/delete/{id}", method = RequestMethod.GET)
     public String deleteAwarded(@PathVariable(value = "id") Long id,
                                 Model model) {
-        listRecipientsAndAwardsRepos.deleteById(id);
-        return "redirect:/listRecipientsAndAwards";
+        try {
+            var del = listRecipientsAndAwardsRepos.findById(id).get();
+            listRecipientsAndAwardsRepos.delete(del);
+            return "redirect:/listRecipientsAndAwards";
+        }
+        catch (Exception ex) {
+            String errorMessage = ex.getMessage();
+            model.addAttribute("errorMessage", errorMessage);
+            return "add-list-recipients-and-awards";
+        }
+
     }
 
     @RequestMapping(value = "/listRecipientsAndAwards/add", method = RequestMethod.GET)

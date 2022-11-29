@@ -33,14 +33,30 @@ public class AwardController {
     @RequestMapping(value = "/award/addAward", method = RequestMethod.POST)
     public String addAwardSubmit(@ModelAttribute Award award,
                                    Model model) {
-        awardRepo.save(award);
-        return "redirect:/award";
+        try {
+            awardRepo.save(award);
+            return "redirect:/award";
+        }
+        catch (Exception ex) {
+            String errorMessage = ex.getMessage();
+            model.addAttribute("errorMessage", errorMessage);
+            return "add-award";
+        }
+
     }
     @RequestMapping(value = "/award/deleteAward/{id}", method = RequestMethod.GET)
     public String deleteAward(@PathVariable(value = "id") Long id,
                                 Model model) {
-        awardRepo.deleteById(id);
-        return "redirect:/award";
+        try {
+            awardRepo.deleteById(id);
+            return "redirect:/award";
+        }
+        catch (Exception ex) {
+            String errorMessage = ex.getMessage();
+            model.addAttribute("errorMessage", errorMessage);
+            return "award";
+        }
+
     }
 
     @RequestMapping(value = "/award/editAward/{id}", method = RequestMethod.GET)
@@ -54,9 +70,17 @@ public class AwardController {
     @RequestMapping(value = "/award/editAward", method = RequestMethod.POST)
     public String editAwardSubmit(@ModelAttribute Award award,
                                     Model model) {
-        var item = awardRepo.findById((long) award.getId()).get();
-        item.setAwardName(award.getAwardName());
-        awardRepo.save(item);
-        return "redirect:/award";
+        try {
+            var item = awardRepo.findById((long) award.getId()).get();
+            item.setAwardName(award.getAwardName());
+            awardRepo.save(item);
+            return "redirect:/award";
+        }
+        catch (Exception ex) {
+            String errorMessage = ex.getMessage();
+            model.addAttribute("errorMessage", errorMessage);
+            return "edit-award";
+        }
+
     }
 }

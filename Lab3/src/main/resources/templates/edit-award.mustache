@@ -39,6 +39,7 @@
         </div>
         <button type="submit" class="btn btn-outline-warning mt-1">Edit award</button>
     </form>
+    <div {{#errorMessage}}class="alert alert-danger" role="alert"{{/errorMessage}}>{{#errorMessage}}{{errorMessage}}{{/errorMessage}}</div>
 </div>
 </body>
 </html>

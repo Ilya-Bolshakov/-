@@ -32,8 +32,16 @@ public class AwarderController {
     @RequestMapping(value = "/awarder/addAwarder", method = RequestMethod.POST)
     public String addAwarderSubmit(@ModelAttribute Awarder awarder,
             Model model) {
-        awarderRepos.save(awarder);
-        return "redirect:/awarder";
+        try {
+            awarderRepos.save(awarder);
+            return "redirect:/awarder";
+        }
+        catch (Exception ex) {
+            String errorMessage = ex.getMessage();
+            model.addAttribute("errorMessage", errorMessage);
+            return "add-awarder";
+        }
+
     }
 
     @RequestMapping(value = "/awarder/editAwarder/{id}", method = RequestMethod.GET)
@@ -48,16 +56,32 @@ public class AwarderController {
     @RequestMapping(value = "/awarder/editAwarder", method = RequestMethod.POST)
     public String editAwarderSubmit(@ModelAttribute Awarder awarder,
                                    Model model) {
-        var item = awarderRepos.findById((long) awarder.getId()).get();
-        item.setName(awarder.getName());
-        awarderRepos.save(item);
-        return "redirect:/awarder";
+        try {
+            var item = awarderRepos.findById((long) awarder.getId()).get();
+            item.setName(awarder.getName());
+            awarderRepos.save(item);
+            return "redirect:/awarder";
+        }
+        catch (Exception ex) {
+            String errorMessage = ex.getMessage();
+            model.addAttribute("errorMessage", errorMessage);
+            return "edit-awarder";
+        }
+
     }
 
     @RequestMapping(value = "/awarder/deleteAwarded/{id}", method = RequestMethod.GET)
     public String deleteAwarded(@PathVariable(value = "id") Long id,
                               Model model) {
-        awarderRepos.deleteById(id);
-        return "redirect:/awarder";
+        try {
+            awarderRepos.deleteById(id);
+            return "redirect:/awarder";
+        }
+        catch (Exception ex) {
+            String errorMessage = ex.getMessage();
+            model.addAttribute("errorMessage", errorMessage);
+            return "awarder";
+        }
+
     }
 }
