@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/award/editAward" method="post" name="award">
+    <label for="nameAward">Input award name:</label>
+    <input type="text" name="awardName" id="nameAward" required value="{{award.getAwardName}}"></input>
+    <input hidden type="text" name="id" id="idAward" required value="{{award.getId}}"></input>
+    <button type="submit">Add award</button>
+</form>
+</body>
+</html>

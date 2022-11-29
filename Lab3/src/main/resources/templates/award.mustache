@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    Hello from string
+    <div>Award list</div>
+    <div>
+        {{#awards}}
+            <div>
+                {{id}}
+                {{awardName}}
+                <a href="award/editAward/{{id}}">
+                    <button>Edit awarder</button>
+                </a>
+                <a href="award/deleteAward/{{id}}">
+                    <button>Delete awarder</button>
+                </a>
+            </div>
+        {{/awards}}
+    </div>
+    <a href="/award/addAward">
+        <button>Add award</button>
+    </a>
+</body>
+</html>

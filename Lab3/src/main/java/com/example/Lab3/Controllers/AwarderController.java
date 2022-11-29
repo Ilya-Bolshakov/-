@@ -1,4 +1,4 @@
-package com.example.Lab3;
+package com.example.Lab3.Controllers;
 
 import com.example.Lab3.Entity.Awarder;
 import com.example.Lab3.repos.AwarderRepos;
@@ -51,6 +51,13 @@ public class AwarderController {
         var item = awarderRepos.findById((long) awarder.getId()).get();
         item = awarder;
         awarderRepos.save(item);
+        return "redirect:/awarder";
+    }
+
+    @RequestMapping(value = "/awarder/deleteAwarded/{id}", method = RequestMethod.GET)
+    public String deleteAwarded(@PathVariable(value = "id") Long id,
+                              Model model) {
+        awarderRepos.deleteById(id);
         return "redirect:/awarder";
     }
 }
