@@ -1,12 +1,12 @@
 package com.example.Lab3.Entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Collection;
 
 @Entity
+@Table(name = "awarder")
 public class Awarder {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,6 +34,11 @@ public class Awarder {
     public void setName(String name) {
         this.name = name;
     }
+
+    @OneToMany
+    @JoinColumn(name = "awarder", referencedColumnName = "id")
+    private Collection<listRecipientsAndAwards> awarders;
+
 
     private String name;
 }
