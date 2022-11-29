@@ -2,13 +2,10 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>Main</title>
 </head>
 <body>
-<div>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -22,7 +19,7 @@
                             <a class="nav-link" aria-current="page" href="/">Main</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="/awarder">Awarders</a>
+                            <a class="nav-link" href="/awarder">Awarders</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/award">Awards</a>
@@ -34,28 +31,19 @@
                 </div>
             </div>
         </nav>
-        <div class="list-group marBot">
-            {{#awarders}}
-            <a class="list-group-item list-group-item-action" aria-current="true">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1 mt-2">ID: {{name}}</h5>
-                    <div class="row">
-                        <div class="col-8 offset-md-3">
-                            <button type="button" onclick="location.href='/awarder/editAwarder/{{id}}'" class="btn btn-outline-warning mt-1">Edit awarder</button>
-                            <button type="button" onclick="location.href='awarder/deleteAwarded/{{id}}'" class="btn btn-outline-danger mt-2">Delete awarder</button>
-                        </div>
-                    </div>
-                </div>
-                <p>{{id}}</p>
-            </a>
-            {{/awarders}}
+    </div>
+    <div class="d-flex h-100 text-center text-white bg-dark " style="min-height: 90.6vh">
+        <div class="w-100 p-4 d-flex justify-content-center pb-4">
+            <main class="px-3">
+                <h1 class="cover-heading">
+                    Main page
+                </h1>
+                <p class="lead">
+                    Web - app on spring
+                    Awarders and awards
+                </p>
+            </main>
         </div>
-        <div class="row">
-            <div class="col-2">
-                <button type="button" onclick="location.href='awarder/addAwarder'" class="btn btn-outline-dark mt-1">Add awarder</button>
-            </div>
-        </div>
-</div>
-
+    </div>
 </body>
 </html>

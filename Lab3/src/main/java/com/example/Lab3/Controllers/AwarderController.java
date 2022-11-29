@@ -49,7 +49,7 @@ public class AwarderController {
     public String editAwarderSubmit(@ModelAttribute Awarder awarder,
                                    Model model) {
         var item = awarderRepos.findById((long) awarder.getId()).get();
-        item = awarder;
+        item.setName(awarder.getName());
         awarderRepos.save(item);
         return "redirect:/awarder";
     }
